@@ -1,7 +1,6 @@
 package com.martinsanguin.solarsystem;
 
 import com.martinsanguin.solarsystem.entities.*;
-import org.assertj.core.annotations.Beta;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -23,24 +23,39 @@ public class PlanetTests {
     }
 
     @Test
-    public void ferengiMovesOneGradePerDay(){
-        assertEquals(ferengi.calculateGradesByDay(1),1);
-        assertEquals(ferengi.calculateGradesByDay(10),10);
-        assertEquals(ferengi.calculateGradesByDay(512),512);
+    public void ferengiPositionInOrbitTest(){
+        assertEquals(ferengi.calculatePositionInTheOrbitAtDay(1),1);
+        assertEquals(ferengi.calculatePositionInTheOrbitAtDay(10),10);
+        assertEquals(ferengi.calculatePositionInTheOrbitAtDay(512),152);
     }
 
     @Test
-    public void betasoideMovesThreeGradesPerDay(){
-        assertEquals(betasoide.calculateGradesByDay(1),3);
-        assertEquals(betasoide.calculateGradesByDay(3),9);
-        assertEquals(betasoide.calculateGradesByDay(510),1530);
+    public void betasoidePositionInOrbitTest(){
+        assertEquals(betasoide.calculatePositionInTheOrbitAtDay(1),3);
+        assertEquals(betasoide.calculatePositionInTheOrbitAtDay(3),9);
+        assertEquals(betasoide.calculatePositionInTheOrbitAtDay(510),90);
     }
 
     @Test
-    public void vulcanoMovesMinusFiveGradesPerDay(){
-        assertEquals(vulcano.calculateGradesByDay(1),-5);
-        assertEquals(vulcano.calculateGradesByDay(10),-50);
-        assertEquals(vulcano.calculateGradesByDay(310),-1550);
+    public void vulcanoPositionInOrbitTest(){
+        assertEquals(vulcano.calculatePositionInTheOrbitAtDay(1),-5);
+        assertEquals(vulcano.calculatePositionInTheOrbitAtDay(10),-50);
+        assertEquals(vulcano.calculatePositionInTheOrbitAtDay(310),-110);
+    }
+
+    @Test
+    public void angleBetweenFerengiAndBetasoideIsTwoByDayOne(){
+        assertEquals(ferengi.calculateAngleWithOtherPlanetByDay(1,betasoide),2);
+    }
+
+    @Test
+    public void angleBetweenFerengiAndVulcanoIsSixByDayOne(){
+        assertEquals(ferengi.calculateAngleWithOtherPlanetByDay(1,vulcano),6);
+    }
+
+    @Test
+    public void angleBetweenVulcanoAndBetasoideIs24ByDayThree(){
+        assertEquals(vulcano.calculateAngleWithOtherPlanetByDay(3,betasoide),24);
     }
 
 }

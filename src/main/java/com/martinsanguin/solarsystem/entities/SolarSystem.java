@@ -15,13 +15,9 @@ public class SolarSystem {
         return aligned;
     }
 
-    public int calculatePositionInTheOrbit(Integer gradesTraveled) {
-        return gradesTraveled % 360;
-    }
-
     private Integer[] getPlanetPositions(Integer day){
         return this.planets.stream()
-                .map(p -> this.calculatePositionInTheOrbit(p.calculateGradesByDay(day)))
+                .map(p -> p.calculatePositionInTheOrbitAtDay(day))
                 .toArray(Integer[]::new);
     }
 

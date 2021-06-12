@@ -2,7 +2,7 @@ package com.martinsanguin.solarsystem.entities;
 
 public class Vulcano extends Planet {
     @Override
-    public int calculateGradesByDay(int day) {
+    public int calculateGradesTraveledByDay(int day) {
         return day * -5;
     }
 }
