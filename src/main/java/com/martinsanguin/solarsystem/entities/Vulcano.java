@@ -5,4 +5,9 @@ public class Vulcano extends Planet {
     public int calculateGradesTraveledByDay(int day) {
         return day * -5;
     }
+
+    @Override
+    protected int distanceFromSun() {
+        return 1000;
+    }
 }

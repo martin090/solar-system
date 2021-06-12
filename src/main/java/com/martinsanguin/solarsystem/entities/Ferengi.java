@@ -7,4 +7,9 @@ public class Ferengi extends Planet {
         return day * 1;
     }
 
+    @Override
+    protected int distanceFromSun() {
+        return 500;
+    }
+
 }

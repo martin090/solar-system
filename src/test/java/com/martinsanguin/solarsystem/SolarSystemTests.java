@@ -4,8 +4,7 @@ import com.martinsanguin.solarsystem.entities.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SolarSystemTests {
 
@@ -22,33 +21,44 @@ public class SolarSystemTests {
         betasoide = new Betasoide();
         vulcano = new Vulcano();
 
-        solarSystem.getPlanets().add(ferengi);
-        solarSystem.getPlanets().add(betasoide);
-        solarSystem.getPlanets().add(vulcano);
+        solarSystem.addPlanet(ferengi);
+        solarSystem.addPlanet(betasoide);
+        solarSystem.addPlanet(vulcano);
     }
 
     @Test
     public void ferengiAndBetasoideAndVulcanoAndTheSunAreAligned() {
 
-        solarSystem.getPlanets().add(ferengi);
-        solarSystem.getPlanets().add(betasoide);
-        solarSystem.getPlanets().add(vulcano);
+        solarSystem.addPlanet(ferengi);
+        solarSystem.addPlanet(betasoide);
+        solarSystem.addPlanet(vulcano);
 
-        assertTrue(solarSystem.arePlanetsAndSunAligned(90));
-        assertTrue(solarSystem.arePlanetsAndSunAligned(450));
-        assertTrue(solarSystem.arePlanetsAndSunAligned(1170));
+        assertTrue(solarSystem.arePlanetsAndSunAlignedAtDay(90));
+        assertTrue(solarSystem.arePlanetsAndSunAlignedAtDay(450));
+        assertTrue(solarSystem.arePlanetsAndSunAlignedAtDay(1170));
     }
 
     @Test
     public void ferengiAndBetasoideAndVulcanoAndTheSunAreNotAligned() {
 
-        solarSystem.getPlanets().add(ferengi);
-        solarSystem.getPlanets().add(betasoide);
-        solarSystem.getPlanets().add(vulcano);
+        solarSystem.addPlanet(ferengi);
+        solarSystem.addPlanet(betasoide);
+        solarSystem.addPlanet(vulcano);
 
-        assertFalse(solarSystem.arePlanetsAndSunAligned(15));
-        assertFalse(solarSystem.arePlanetsAndSunAligned(430));
-        assertFalse(solarSystem.arePlanetsAndSunAligned(1560));
+        assertFalse(solarSystem.arePlanetsAndSunAlignedAtDay(15));
+        assertFalse(solarSystem.arePlanetsAndSunAlignedAtDay(430));
+        assertFalse(solarSystem.arePlanetsAndSunAlignedAtDay(1560));
     }
+
+    @Test
+    public void perimeterOfPlanetsAtDay3is3211Km(){
+        assertEquals(solarSystem.calculatePerimeterOfPlanetsAtDay(3),3211);
+    }
+
+    @Test
+    public void perimeterOfPlanetsAtDay1500is5437Km(){
+        assertEquals(solarSystem.calculatePerimeterOfPlanetsAtDay(1500),5437);
+    }
+
 
 }
