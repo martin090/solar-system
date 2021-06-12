@@ -16,28 +16,28 @@ public class PlanetTests {
     private Planet vulcano;
 
     @BeforeEach
-    public void init(){
+    public void setUp(){
         ferengi = new Ferengi();
         betasoide = new Betasoide();
         vulcano = new Vulcano();
     }
 
     @Test
-    public void ferengiMovesOneGradeByDay(){
+    public void ferengiMovesOneGradePerDay(){
         assertEquals(ferengi.calculateGradesByDay(1),1);
         assertEquals(ferengi.calculateGradesByDay(10),10);
         assertEquals(ferengi.calculateGradesByDay(512),512);
     }
 
     @Test
-    public void betasoideMovesThreeGradesByDay(){
+    public void betasoideMovesThreeGradesPerDay(){
         assertEquals(betasoide.calculateGradesByDay(1),3);
         assertEquals(betasoide.calculateGradesByDay(3),9);
         assertEquals(betasoide.calculateGradesByDay(510),1530);
     }
 
     @Test
-    public void vulcanoMovesMinusFiveGradesByDay(){
+    public void vulcanoMovesMinusFiveGradesPerDay(){
         assertEquals(vulcano.calculateGradesByDay(1),-5);
         assertEquals(vulcano.calculateGradesByDay(10),-50);
         assertEquals(vulcano.calculateGradesByDay(310),-1550);
