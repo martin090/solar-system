@@ -21,21 +21,37 @@ public class SolarSystem {
 
     public double calculatePerimeterOfPlanetsAtDay(Integer day) {
         List<Double> distancesBetweenPlanets = this.getDistancesBetweenPlanetsAtDay(day);
-        return distancesBetweenPlanets.stream().reduce(0D, (subtotal,distance) -> subtotal + distance);
+        Double perimeter = distancesBetweenPlanets.stream().reduce(0D, (subtotal,distance) -> subtotal + distance);
+        return perimeter;
     }
 
     public Boolean isSunInsidePerimeterOfPlanetsAtDay(int day) {
-        Double areaBetweenPlanets = this.calculateAreaOfPlanetsAtday(day);
-        Double areaBetweenFeregniVulcanoSun = this.getFeregni().calculateAreaWithOtherPlanetAndSunAtDay(day,this.getVulcano());
-        Double areaBetweenVulcanoBetasoideSun = this.getVulcano().calculateAreaWithOtherPlanetAndSunAtDay(day,this.getBetasoide());
-        Double areaBetweenFeregniBetasoideSun = this.getBetasoide().calculateAreaWithOtherPlanetAndSunAtDay(day,this.getFeregni());
+        double areaBetweenPlanets = this.calculateAreaOfPlanetsAtday(day);
+        double areaBetweenFeregniVulcanoSun = this.getFeregni().calculateAreaWithOtherPlanetAndSunAtDay(day,this.getVulcano());
+        double areaBetweenVulcanoBetasoideSun = this.getVulcano().calculateAreaWithOtherPlanetAndSunAtDay(day,this.getBetasoide());
+        double areaBetweenFeregniBetasoideSun = this.getBetasoide().calculateAreaWithOtherPlanetAndSunAtDay(day,this.getFeregni());
+        if(areaBetweenPlanets != 0)
+            return areaBetweenPlanets == ((areaBetweenFeregniVulcanoSun + areaBetweenVulcanoBetasoideSun + areaBetweenFeregniBetasoideSun));
+        else
+            return false;
+    }
 
-        Double totalArea = (areaBetweenFeregniVulcanoSun + areaBetweenVulcanoBetasoideSun + areaBetweenFeregniBetasoideSun);
+    public Boolean arePlanetsWithoutSunAlignedAtDay(int day) {
+        if(!this.arePlanetsAndSunAlignedAtDay(day)){
+            return this.areOnlyThePlanetsAlignedAtDay(day);
+        }
+        return false;
+    }
 
-        System.out.println("Total 3 areas = " + totalArea);
-        System.out.println("Area entre planetas = " + areaBetweenPlanets);
+    private Boolean areOnlyThePlanetsAlignedAtDay(int day) {
+        List<Double> distancesBetweenConsecutivesPlanets = this.getDistancesBetweenConsecutivePlanetsAtDay(day);
+        Double distanceBetweenFirstAndLastPlanet = this.planets.getFirst().calculateDistanceToPlanetAtDay(day,this.planets.getLast());
 
-        return areaBetweenPlanets.equals(totalArea);
+        Double totalDistanceBetweenConsecutivesPlanets = distancesBetweenConsecutivesPlanets
+                                                                        .stream()
+                                                                        .reduce(0D, (subtotal,distance) -> subtotal + distance);
+
+        return totalDistanceBetweenConsecutivesPlanets.intValue() == distanceBetweenFirstAndLastPlanet.intValue();
     }
 
     private Integer[] getPlanetPositions(Integer day){
@@ -47,7 +63,7 @@ public class SolarSystem {
     private Boolean arePlanetPositionsAlignedWithSun(Integer[] planetsPosition){
         //TODO: Should I use directly the LinkedList?
         boolean aligned = true;
-        int planetPosition = planetsPosition[0];
+        double planetPosition = planetsPosition[0];
         for (int i = 1; i < planetsPosition.length; i++){
             aligned = aligned && this.arePositionsAligned(planetPosition,planetsPosition[i]);
             planetPosition = planetsPosition[i];
@@ -55,16 +71,14 @@ public class SolarSystem {
         return aligned;
     }
 
-    private Boolean arePositionsAligned(Integer planetPosition1, Integer planetPosition2){
+    private Boolean arePositionsAligned(double planetPosition1, double planetPosition2){
         return (Math.abs(planetPosition1 - planetPosition2) == 0) || (Math.abs(planetPosition1 - planetPosition2) == 180) || (Math.abs(planetPosition1 - planetPosition2) == 360);
     }
 
     private List<Double> getDistancesBetweenPlanetsAtDay(int day) {
         List<Double> distancesBetweenPlanets = new ArrayList<>();
-
         distancesBetweenPlanets.addAll(this.getDistancesBetweenConsecutivePlanetsAtDay(day));
         distancesBetweenPlanets.add(this.planets.getFirst().calculateDistanceToPlanetAtDay(day,this.planets.getLast()));
-
         return distancesBetweenPlanets;
     }
 
@@ -93,11 +107,11 @@ public class SolarSystem {
         }
     }
 
-    private Double calculateAreaOfPlanetsAtday(int day){
-        Double planetsPerimeter = this.calculatePerimeterOfPlanetsAtDay(day);
-        Double semiPerimeter = planetsPerimeter / 2;
+    private double calculateAreaOfPlanetsAtday(int day){
+        double planetsPerimeter = this.calculatePerimeterOfPlanetsAtDay(day);
+        double semiPerimeter = planetsPerimeter / 2;
 
-        Double area = Math.sqrt(semiPerimeter
+        double area = Math.sqrt(semiPerimeter
                                 * (semiPerimeter - getFeregni().calculateDistanceToPlanetAtDay(day,getVulcano()))
                                 * (semiPerimeter - getVulcano().calculateDistanceToPlanetAtDay(day,getBetasoide()))
                                 * (semiPerimeter - getBetasoide().calculateDistanceToPlanetAtDay(day,getFeregni())));

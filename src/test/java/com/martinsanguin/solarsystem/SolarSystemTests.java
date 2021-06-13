@@ -49,8 +49,18 @@ public class SolarSystemTests {
     }
 
     @Test
-    public void theSunIsInsideThePerimeterOfPlanetsByDay79(){
-        assertTrue(solarSystem.isSunInsidePerimeterOfPlanetsAtDay(79));
+    public void theSunIsInsideThePerimeterOfPlanetsByDay259(){
+        assertTrue(solarSystem.isSunInsidePerimeterOfPlanetsAtDay(259));
+    }
+
+    @Test
+    public void planetsAreNotAlignedWithoutTheSunAtDay259(){
+        assertFalse(solarSystem.arePlanetsWithoutSunAlignedAtDay(259));
+    }
+
+    @Test
+    public void planetsAreAlignedWithoutTheSunAtDay493(){
+        assertTrue(solarSystem.arePlanetsWithoutSunAlignedAtDay(493));
     }
 
 }
