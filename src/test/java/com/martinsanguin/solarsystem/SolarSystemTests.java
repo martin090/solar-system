@@ -16,23 +16,10 @@ public class SolarSystemTests {
     @BeforeEach
     public void setUp(){
         solarSystem = new SolarSystem();
-
-        ferengi = new Ferengi();
-        betasoide = new Betasoide();
-        vulcano = new Vulcano();
-
-        solarSystem.addPlanet(ferengi);
-        solarSystem.addPlanet(betasoide);
-        solarSystem.addPlanet(vulcano);
     }
 
     @Test
     public void ferengiAndBetasoideAndVulcanoAndTheSunAreAligned() {
-
-        solarSystem.addPlanet(ferengi);
-        solarSystem.addPlanet(betasoide);
-        solarSystem.addPlanet(vulcano);
-
         assertTrue(solarSystem.arePlanetsAndSunAlignedAtDay(90));
         assertTrue(solarSystem.arePlanetsAndSunAlignedAtDay(450));
         assertTrue(solarSystem.arePlanetsAndSunAlignedAtDay(1170));
@@ -41,10 +28,6 @@ public class SolarSystemTests {
     @Test
     public void ferengiAndBetasoideAndVulcanoAndTheSunAreNotAligned() {
 
-        solarSystem.addPlanet(ferengi);
-        solarSystem.addPlanet(betasoide);
-        solarSystem.addPlanet(vulcano);
-
         assertFalse(solarSystem.arePlanetsAndSunAlignedAtDay(15));
         assertFalse(solarSystem.arePlanetsAndSunAlignedAtDay(430));
         assertFalse(solarSystem.arePlanetsAndSunAlignedAtDay(1560));
@@ -52,13 +35,22 @@ public class SolarSystemTests {
 
     @Test
     public void perimeterOfPlanetsAtDay3is3211Km(){
-        assertEquals(solarSystem.calculatePerimeterOfPlanetsAtDay(3),3211);
+        assertEquals(solarSystem.calculatePerimeterOfPlanetsAtDay(3),3210.498913262907);
     }
 
     @Test
     public void perimeterOfPlanetsAtDay1500is5437Km(){
-        assertEquals(solarSystem.calculatePerimeterOfPlanetsAtDay(1500),5437);
+        assertEquals(solarSystem.calculatePerimeterOfPlanetsAtDay(1500),5437.03915854251);
     }
 
+    @Test
+    public void theSunIsOutsideThePerimeterOfPlanetsByDay3(){
+        assertFalse(solarSystem.isSunInsidePerimeterOfPlanetsAtDay(3));
+    }
+
+    @Test
+    public void theSunIsInsideThePerimeterOfPlanetsByDay79(){
+        assertTrue(solarSystem.isSunInsidePerimeterOfPlanetsAtDay(79));
+    }
 
 }

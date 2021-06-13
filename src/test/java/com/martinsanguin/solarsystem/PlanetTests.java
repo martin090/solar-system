@@ -38,19 +38,19 @@ public class PlanetTests {
 
     @Test
     public void vulcanoPositionInOrbitTest(){
-        assertEquals(vulcano.calculatePositionInTheOrbitAtDay(1),-5);
-        assertEquals(vulcano.calculatePositionInTheOrbitAtDay(3),-15);
-        assertEquals(vulcano.calculatePositionInTheOrbitAtDay(1500),-300);
+        assertEquals(vulcano.calculatePositionInTheOrbitAtDay(1),355);
+        assertEquals(vulcano.calculatePositionInTheOrbitAtDay(3),345);
+        assertEquals(vulcano.calculatePositionInTheOrbitAtDay(1500),60);
     }
 
     @Test
-    public void angleFromSunBetweenFerengiAndVulcanoIs18ByDay3(){
-        assertEquals(ferengi.calculateAngleWithOtherPlanetByDay(3,vulcano),18);
+    public void angleFromSunBetweenFerengiAndVulcanoIs342ByDay3(){
+        assertEquals(ferengi.calculateAngleWithOtherPlanetByDay(3,vulcano),342);
     }
 
     @Test
-    public void angleFromSunBetweenVulcanoAndBetasoideIs24ByDay3(){
-        assertEquals(vulcano.calculateAngleWithOtherPlanetByDay(3,betasoide),24);
+    public void angleFromSunBetweenVulcanoAndBetasoideIs336ByDay3(){
+        assertEquals(vulcano.calculateAngleWithOtherPlanetByDay(3,betasoide),336);
     }
 
     @Test
@@ -64,28 +64,28 @@ public class PlanetTests {
     }
 
     @Test
-    public void angleFromSunBetweenVulcanoAndFerengiIs120ByDay1500(){
+    public void angleFromSunBetweenVulcanoAndFerengiIs0ByDay1500(){
         assertEquals(vulcano.calculateAngleWithOtherPlanetByDay(1500,ferengi),0);
     }
 
     @Test
     public void distanceBetweenFeregniAndVulcanoIs547AtDay3(){
-        assertEquals(ferengi.calculateDistanceToPlanetAtDay(3, vulcano), 547);
+        assertEquals(ferengi.calculateDistanceToPlanetAtDay(3, vulcano), 546.757243852193);
     }
 
     @Test
     public void distanceBetweenVulcanoAndBetasoideIs1160AtDay3(){
-        assertEquals(vulcano.calculateDistanceToPlanetAtDay(3, betasoide), 1160);
+        assertEquals(vulcano.calculateDistanceToPlanetAtDay(3, betasoide), 1160.0940347358037);
     }
 
     @Test
     public void distanceBetweenFeregniAndBetasoideIs1504AtDay3(){
-        assertEquals(ferengi.calculateDistanceToPlanetAtDay(3, betasoide), 1504);
+        assertEquals(ferengi.calculateDistanceToPlanetAtDay(3, betasoide), 1503.6476346749105);
     }
 
     @Test
     public void distanceBetweenVulcanoAndBetasoideIs2646AtDay1500(){
-        assertEquals(vulcano.calculateDistanceToPlanetAtDay(1500, betasoide), 2646);
+        assertEquals(vulcano.calculateDistanceToPlanetAtDay(1500, betasoide), 2645.7513110645905);
     }
 
     @Test
@@ -95,7 +95,12 @@ public class PlanetTests {
 
     @Test
     public void distanceBetweenFerengiAndBetasoideIs2291AtDay1500() {
-        assertEquals(ferengi.calculateDistanceToPlanetAtDay(1500, betasoide), 2291);
+        assertEquals(ferengi.calculateDistanceToPlanetAtDay(1500, betasoide), 2291.28784747792);
+    }
+
+    @Test
+    public void calculateAreaBetweenFerenginBetasoideAndSunIs54726AtDay3(){
+        assertEquals(ferengi.calculateAreaWithOtherPlanetAndSunAtDay(3, betasoide),52264.231633826064);
     }
 
 }
