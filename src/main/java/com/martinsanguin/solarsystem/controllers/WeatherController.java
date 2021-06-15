@@ -6,10 +6,7 @@ import com.martinsanguin.solarsystem.services.DayNotFoundFailure;
 import com.martinsanguin.solarsystem.services.WeatherService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/weather")
@@ -21,8 +18,8 @@ public class WeatherController {
         this.weatherService = weatherService;
     }
 
-    @GetMapping("/{day}")
-    public ResponseEntity<WeatherByDayDTO> getWeatherByDay(@PathVariable int day){
+    @GetMapping()
+    public ResponseEntity<WeatherByDayDTO> getWeatherByDay(@RequestParam int day){
         try {
             return new ResponseEntity<>(this.weatherService.getWeatherByDay(day), HttpStatus.OK);
         }catch (DayNotFoundFailure ex){
@@ -32,8 +29,8 @@ public class WeatherController {
         }
     }
 
-    @GetMapping("/report/{years}")
-    public ResponseEntity<WeatherReportDTO> getWeatherReport(@PathVariable int years){
+    @GetMapping("/report")
+    public ResponseEntity<WeatherReportDTO> getWeatherReport(@RequestParam int years){
         return new ResponseEntity<>(this.weatherService.getWeatherReportForNextYears(years), HttpStatus.OK);
     }
 }
