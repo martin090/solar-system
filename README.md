@@ -29,5 +29,8 @@ La solución se encuentra deployada en Google Cloud Platform.
     <li>Para calcular las distancias entre 2 planetas utilizo el teorema del coseno. Para esto previamente se debe calcular el ángulo que existe entre ellos.</li>
     <li>Para conocer si el sol se encuentra dentro del perímetro que forman los triangulos, calculo el área que forman los planetas y la comparo contra las áreas que forman cada combinación de dos planetas distintos y el sol.</li>
     <li>El cálculo del área de un triángulo se realiza con la Fórmula de Herón.</li>
-    <li>Para saber si sólo los planetas están alineados (sin el sol) sumo las distancias intermedios entre los planetas y la comparo contra la distancia entre las entre el primer y último planeta </li>
+    <li>Para saber si sólo los planetas están alineados (sin el sol) sumo las distancias intermedias entre los planetas y la comparo contra la distancia entre las entre el primer y último planeta </li>
+  <li> La condición climática para cada día se calcula al momento que la aplicación inicia. En este momento también se calcula el perímetro que forman los planetas y se persiste en la base de datos. Esto permitirá consultar direcatmente a la base cuál es el máximo perímetro y para que días. </li>
+  <li> Un período son días consecutivos con el mismo clima. </li>
+  <li> Se considera que un año tiene 365 días. </li>
 </ol>
