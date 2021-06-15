@@ -24,7 +24,7 @@ La solución se encuentra deployada en Google Cloud Platform.
 
 <li>Endpoint para condición climática del día: </li>
 
-<h2>Consideraciones a la hora de la resolución</h2>
+<h2>Sobre la resolución del desafío</h2>
 <ol>
     <li>Para conocer si los planetas y el sol están alineados obtengo la posición en la orbita de cada planeta y evalué si están a una distancia de 180º o 360º </li>
     <li>Para calcular las distancias entre 2 planetas utilicé el teorema del coseno. Para esto previamente calculo el ángulo que existe entre ellos.</li>
