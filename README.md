@@ -31,7 +31,8 @@ La solución se encuentra deployada en Google Cloud Platform.
     <li>Para conocer si el sol se encuentra dentro del perímetro que forman los triangulos, calculo el área que forman los planetas y la comparo contra las áreas que forman cada combinación de dos planetas distintos y el sol.</li>
     <li>El cálculo del área de un triángulo se realiza con la Fórmula de Herón.</li>
     <li>Para saber si sólo los planetas están alineados (sin el sol) sumo las distancias intermedias entre los planetas y la comparo contra la distancia entre el primer y último planeta </li>
-  <li> La condición climática para cada día se calcula al momento que la aplicación inicia. En este momento también se calcula el perímetro que forman los planetas persistiendolo en la base de datos. Esto permitirá consultar directamente a la base cuál es el máximo perímetro y para que días. </li>
+  <li> La condición climática para cada día se calcula al momento que la aplicación inicia si el parámetro weather.data.init del archivo application.yml está configurado en true. En este momento también se calcula el perímetro que forman los planetas persistiendolo en la base de datos. Esto permitirá consultar directamente a la base cuál es el máximo perímetro y para que días. </li>
+  <li> Si la condición climática no es DROUGHT, RAINY o OPTIMAL_PRESURE_AND_TEMPERATURE entonces se considera que está soleado (SUNNY). </li>
 </ol>
 
 <h2>Consideraciones para el reporte climático</h2>
