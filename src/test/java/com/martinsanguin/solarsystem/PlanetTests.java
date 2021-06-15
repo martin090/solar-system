@@ -1,9 +1,9 @@
 package com.martinsanguin.solarsystem;
 
-import com.martinsanguin.solarsystem.entities.Betasoide;
-import com.martinsanguin.solarsystem.entities.Ferengi;
-import com.martinsanguin.solarsystem.entities.Planet;
-import com.martinsanguin.solarsystem.entities.Vulcano;
+import com.martinsanguin.solarsystem.core.Betasoide;
+import com.martinsanguin.solarsystem.core.Ferengi;
+import com.martinsanguin.solarsystem.core.Planet;
+import com.martinsanguin.solarsystem.core.Vulcano;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -99,7 +99,7 @@ public class PlanetTests {
     }
 
     @Test
-    public void calculateAreaBetweenFerenginBetasoideAndSunIs52264KmAtDay3(){
+    public void areaBetweenFerenginBetasoideAndSunIs52264KmAtDay3(){
         assertEquals(ferengi.calculateAreaWithOtherPlanetAndSunAtDay(3, betasoide),52264.231633826064);
     }
 

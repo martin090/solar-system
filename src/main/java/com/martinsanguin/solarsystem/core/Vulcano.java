@@ -1,4 +1,4 @@
-package com.martinsanguin.solarsystem.entities;
+package com.martinsanguin.solarsystem.core;
 
 public class Vulcano extends Planet {
     @Override

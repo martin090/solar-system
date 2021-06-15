@@ -1,6 +1,6 @@
 package com.martinsanguin.solarsystem;
 
-import com.martinsanguin.solarsystem.entities.*;
+import com.martinsanguin.solarsystem.core.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,9 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SolarSystemTests {
 
     private SolarSystem solarSystem;
-    private Planet ferengi;
-    private Planet betasoide;
-    private Planet vulcano;
 
     @BeforeEach
     public void setUp(){

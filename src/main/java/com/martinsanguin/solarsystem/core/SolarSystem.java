@@ -1,7 +1,10 @@
-package com.martinsanguin.solarsystem.entities;
+package com.martinsanguin.solarsystem.core;
+
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
+@Component
 public class SolarSystem {
 
     private LinkedList<Planet> planets;
@@ -19,21 +22,23 @@ public class SolarSystem {
         return aligned;
     }
 
+    public Boolean isSunInsidePerimeterOfPlanetsAtDay(int day) {
+        Double areaBetweenPlanets = this.calculateAreaOfPlanetsAtday(day);
+        Double areaBetweenFeregniVulcanoSun = this.getFeregni().calculateAreaWithOtherPlanetAndSunAtDay(day,this.getVulcano());
+        Double areaBetweenVulcanoBetasoideSun = this.getVulcano().calculateAreaWithOtherPlanetAndSunAtDay(day,this.getBetasoide());
+        Double areaBetweenFeregniBetasoideSun = this.getBetasoide().calculateAreaWithOtherPlanetAndSunAtDay(day,this.getFeregni());
+        Double areaOfPlanetsWithSun = areaBetweenFeregniVulcanoSun + areaBetweenVulcanoBetasoideSun + areaBetweenFeregniBetasoideSun;
+
+        if(areaBetweenPlanets != 0)
+            return areaBetweenPlanets.intValue() == areaOfPlanetsWithSun.intValue();
+        else
+            return false;
+    }
+
     public double calculatePerimeterOfPlanetsAtDay(Integer day) {
         List<Double> distancesBetweenPlanets = this.getDistancesBetweenPlanetsAtDay(day);
         Double perimeter = distancesBetweenPlanets.stream().reduce(0D, (subtotal,distance) -> subtotal + distance);
         return perimeter;
-    }
-
-    public Boolean isSunInsidePerimeterOfPlanetsAtDay(int day) {
-        double areaBetweenPlanets = this.calculateAreaOfPlanetsAtday(day);
-        double areaBetweenFeregniVulcanoSun = this.getFeregni().calculateAreaWithOtherPlanetAndSunAtDay(day,this.getVulcano());
-        double areaBetweenVulcanoBetasoideSun = this.getVulcano().calculateAreaWithOtherPlanetAndSunAtDay(day,this.getBetasoide());
-        double areaBetweenFeregniBetasoideSun = this.getBetasoide().calculateAreaWithOtherPlanetAndSunAtDay(day,this.getFeregni());
-        if(areaBetweenPlanets != 0)
-            return areaBetweenPlanets == ((areaBetweenFeregniVulcanoSun + areaBetweenVulcanoBetasoideSun + areaBetweenFeregniBetasoideSun));
-        else
-            return false;
     }
 
     public Boolean arePlanetsWithoutSunAlignedAtDay(int day) {
@@ -61,7 +66,6 @@ public class SolarSystem {
     }
 
     private Boolean arePlanetPositionsAlignedWithSun(Integer[] planetsPosition){
-        //TODO: Should I use directly the LinkedList?
         boolean aligned = true;
         double planetPosition = planetsPosition[0];
         for (int i = 1; i < planetsPosition.length; i++){
@@ -109,12 +113,11 @@ public class SolarSystem {
 
     private double calculateAreaOfPlanetsAtday(int day){
         double planetsPerimeter = this.calculatePerimeterOfPlanetsAtDay(day);
-        double semiPerimeter = planetsPerimeter / 2;
 
-        double area = Math.sqrt(semiPerimeter
-                                * (semiPerimeter - getFeregni().calculateDistanceToPlanetAtDay(day,getVulcano()))
-                                * (semiPerimeter - getVulcano().calculateDistanceToPlanetAtDay(day,getBetasoide()))
-                                * (semiPerimeter - getBetasoide().calculateDistanceToPlanetAtDay(day,getFeregni())));
+        double area = HeronFormula.calculateArea(planetsPerimeter,
+                                                getFeregni().calculateDistanceToPlanetAtDay(day,getVulcano()),
+                                                getVulcano().calculateDistanceToPlanetAtDay(day,getBetasoide()),
+                                                getBetasoide().calculateDistanceToPlanetAtDay(day,getFeregni()));
 
         return area;
     }

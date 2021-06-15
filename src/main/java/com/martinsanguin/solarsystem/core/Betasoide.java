@@ -1,15 +1,13 @@
-package com.martinsanguin.solarsystem.entities;
+package com.martinsanguin.solarsystem.core;
 
-public class Ferengi extends Planet {
-
+public class Betasoide extends Planet {
     @Override
     public int calculateDegreesTraveledByDay(int day) {
-        return day * 1;
+        return day * 3;
     }
 
     @Override
     protected int distanceFromSun() {
-        return 500;
+        return 2000;
     }
-
 }

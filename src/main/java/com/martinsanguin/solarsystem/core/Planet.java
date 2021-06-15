@@ -1,4 +1,4 @@
-package com.martinsanguin.solarsystem.entities;
+package com.martinsanguin.solarsystem.core;
 
 public abstract class Planet {
     protected abstract int calculateDegreesTraveledByDay(int day);
@@ -17,18 +17,20 @@ public abstract class Planet {
 
     public double calculateDistanceToPlanetAtDay(int day, Planet otherPlanet) {
         double angleToOtherPlanetInRadians = Math.toRadians(this.calculateAngleWithOtherPlanetByDay(day, otherPlanet));
-        double distanceBetweenPlanets = Math.sqrt(Math.pow(this.distanceFromSun(),2) + Math.pow(otherPlanet.distanceFromSun(),2) - 2 * this.distanceFromSun() * otherPlanet.distanceFromSun() * Math.cos(angleToOtherPlanetInRadians));
+
+        //Se utiliza el teorema del coseno
+        double distanceBetweenPlanets = Math.sqrt(Math.pow(this.distanceFromSun(),2) + Math.pow(otherPlanet.distanceFromSun(),2)
+                                                    - 2 * this.distanceFromSun() * otherPlanet.distanceFromSun() * Math.cos(angleToOtherPlanetInRadians));
         return distanceBetweenPlanets;
     }
 
     public double calculateAreaWithOtherPlanetAndSunAtDay(int day, Planet otherPlanet){
         double distanceBetweenTwoPlanets = this.calculateDistanceToPlanetAtDay(day, otherPlanet);
         double perimeterBetweenTwoPlanetsAndSun = this.distanceFromSun() + otherPlanet.distanceFromSun() + distanceBetweenTwoPlanets;
-        double semiPerimeter = perimeterBetweenTwoPlanetsAndSun / 2;
-        double area = Math.sqrt(semiPerimeter
-                * (semiPerimeter - distanceBetweenTwoPlanets)
-                * (semiPerimeter - this.distanceFromSun())
-                * (semiPerimeter - otherPlanet.distanceFromSun()));
+        double area = HeronFormula.calculateArea(perimeterBetweenTwoPlanetsAndSun,
+                                                distanceBetweenTwoPlanets,
+                                                this.distanceFromSun(),
+                                                otherPlanet.distanceFromSun());
         return area;
     }
 
