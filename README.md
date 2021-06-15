@@ -20,3 +20,14 @@
 La solución se encuentra deployada en Google Cloud Platform.
 
 <li>Endpoint para reporte: </li>
+
+<li>Endpoint para condición climática del día: </li>
+
+<h2>Consideraciones a la hora de la resolución</h2>
+<ol>
+    <li>Para conocer si los planetas y el sol están alineados obtengo la posición en la orbita de cada planeta y evaluo si están a una distancia de 180º o 360º.</li>
+    <li>Para calcular las distancias entre 2 planetas utilizo el teorema del coseno. Para esto previamente se debe calcular el ángulo que existe entre ellos.</li>
+    <li>Para conocer si el sol se encuentra dentro del perímetro que forman los triangulos, calculo el área que forman los planetas y la comparo contra las áreas que forman cada combinación de dos planetas distintos y el sol.</li>
+    <li>El cálculo del área de un triángulo se realiza con la Fórmula de Herón.</li>
+    <li>Para saber si sólo los planetas están alineados (sin el sol) sumo las distancias intermedios entre los planetas y la comparo contra la distancia entre las entre el primer y último planeta </li>
+</ol>
