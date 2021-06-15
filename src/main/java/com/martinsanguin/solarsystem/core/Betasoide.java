@@ -7,7 +7,7 @@ public class Betasoide extends Planet {
     }
 
     @Override
-    protected int distanceFromSun() {
+    public int distanceFromSun() {
         return 2000;
     }
 }

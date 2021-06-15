@@ -7,7 +7,7 @@ public class Vulcano extends Planet {
     }
 
     @Override
-    protected int distanceFromSun() {
+    public int distanceFromSun() {
         return 1000;
     }
 }
