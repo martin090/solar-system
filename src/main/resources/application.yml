@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://34.95.192.208:3306/weather
+    url: jdbc:mysql://34.66.62.160:3306/weather
     username: root
     password: weatherroot
   jpa:
