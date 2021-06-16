@@ -21,9 +21,9 @@
 La solución se encuentra deployada en Google Cloud Platform.
 
 <li>Endpoint para reporte:</li>
-<br>
+
 <a href='https://meli-weather-316918.rj.r.appspot.com/api/v1/weather/report?years=10'>https://meli-weather-316918.rj.r.appspot.com/api/v1/weather/report?years=10</a>
-<br>
+
 Respuesta JSON:
 ```{
     "year": 10,
@@ -36,16 +36,16 @@ Respuesta JSON:
 ```
 
 <li>Endpoint para condición climática del día: </li>
-<br>
+
 <a href='https://meli-weather-316918.rj.r.appspot.com/api/v1/weather?day=80'>https://meli-weather-316918.rj.r.appspot.com/api/v1/weather?day=80</a>
-<br>
+
 Respuesta JSON:
-```
-{
+```{
     "day": 80,
     "weather": "RAINY"
 }
 ```
+
 <h2>Sobre la resolución del desafío</h2>
 <ol>
     <li>Para conocer si los planetas y el sol están alineados obtengo la posición en la orbita de cada planeta y evalué si están a una distancia de 180º o 360º </li>
