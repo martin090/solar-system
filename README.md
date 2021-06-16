@@ -22,18 +22,17 @@ La solución se encuentra deployada en Google Cloud Platform.
 
 <li>Endpoint para reporte: </li>
 
-https://meli-weather-316918.rj.r.appspot.com/api/v1/weather/report?years=10
+<a href='https://meli-weather-316918.rj.r.appspot.com/api/v1/weather/report?years=10'>https://meli-weather-316918.rj.r.appspot.com/api/v1/weather/report?years=10</a>
 
-{
+```{
     "year": 10,
     "reportDescription": "Weather's periods for next 10 years",
     "droughtPeriods": 0,
     "rainPeriods": 1127,
     "optimalPressureAndTemperaturePeriods": 0,
-    "topRainyDays": [
-        72,108,252,288,432,468,612,648,792,828,972,1008,1152,1188,1332,1368,1512,1548,1692,1728,1872,1908,2052,2088,2232,2268,2412,2448
-    ]
-}
+    "topRainyDays": [72,108,252,288,432,468,612,648,792,828,972,1008,1152,1188,1332,1368,1512,1548,1692,1728,1872,1908,2052,2088,2232,2268,2412,2448]
+    }
+```
 
 <li>Endpoint para condición climática del día: </li>
 
