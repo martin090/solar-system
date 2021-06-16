@@ -4,5 +4,7 @@ spring:
     url: jdbc:mysql://34.66.62.160:3306/weather
     username: root
     password: weatherroot
-  jpa:
-    show-sql: true
+weather:
+  data:
+    init: false
+    years: 10
