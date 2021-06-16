@@ -24,7 +24,7 @@ La solución se encuentra deployada en Google Cloud Platform.
 
 <a href='https://meli-weather-316918.rj.r.appspot.com/api/v1/weather/report?years=10'>https://meli-weather-316918.rj.r.appspot.com/api/v1/weather/report?years=10</a>
 
-Respuesta JSON:
+Ejemplo de respuesta JSON:
 
 ```
 {
@@ -41,7 +41,7 @@ Respuesta JSON:
 
 <a href='https://meli-weather-316918.rj.r.appspot.com/api/v1/weather?day=80'>https://meli-weather-316918.rj.r.appspot.com/api/v1/weather?day=80</a></br>
 
-Respuesta JSON:
+Ejemplo de respuesta JSON:
 
 ```
 {
